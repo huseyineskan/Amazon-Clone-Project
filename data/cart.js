@@ -60,3 +60,13 @@ export function calculateCartQuantity(element) {
 
     document.querySelector(`.${element}`).innerHTML = cartQuantity;
 }
+
+export function updateQuantity(productId, newQuantity) {
+    cart.forEach((item) => {
+        if(productId === item.productId) {
+            item.quantity = newQuantity;
+        }
+    });
+
+    saveToStorage();
+}
