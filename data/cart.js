@@ -18,7 +18,6 @@ function saveToStorage() {
 
 export function addToCart(productId) {
     const productQuantity = Number(document.querySelector(`.js-quantity-selector-${productId}`).value);
-    console.log(productQuantity)
     let matchingItem;
 
     cart.forEach((item) => {
@@ -70,6 +69,20 @@ export function updateQuantity(productId, newQuantity) {
             item.quantity = newQuantity;
         }
     });
+
+    saveToStorage();
+}
+
+export function updateDeliveryOption(productId, deliveryOptionId) {
+    let matchingItem;
+
+    cart.forEach((item) => {
+        if(productId === item.productId) {
+            matchingItem = item;
+        }
+    });
+
+    matchingItem.deliveryOptionId = deliveryOptionId;
 
     saveToStorage();
 }
